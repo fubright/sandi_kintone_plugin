@@ -1,0 +1,23 @@
+{
+  "manifest_version": 1,
+  "version": "1.0.0",
+  "type": "APP",
+  "name": {
+    "ja": "通話アプリ",
+    "en": "Calling app"
+  },
+  "description": {
+    "ja": "プラグイン化のお試しです。",
+    "en": "This is an experiment with plugging in."
+  },
+  "icon": "image/check.png",
+  "homepage_url": {
+    "ja": "https://fubright.co.jp",
+    "en": "https://fubright.co.jp"
+  },
+  "desktop": {
+    "js": [
+      "js/plugin.js"
+    ]
+  }
+}

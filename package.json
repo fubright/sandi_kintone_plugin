@@ -1,0 +1,46 @@
+{
+  "name": "sandi_kintone_plugin",
+  "version": "1.0.0",
+  "description": "kintone用ソフトフォン連携プラグイン",
+  "main": "index.js",
+  "type": "module",
+  "keywords": [
+    "kintone",
+    "plugin",
+    "softphone"
+  ],
+  "author": "フューブライト・コミュニケーションズ株式会社",
+  "license": "ISC",
+  "homepage": "https://fubright.co.jp",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rimraf dist plugin.ppk",
+    "lint": "eslint src/js/*.js",
+    "lint:fix": "eslint src/js/*.js --fix",
+    "format": "prettier --write src/**/*.{js,css,html}",
+    "format:check": "prettier --check src/**/*.{js,css,html}",
+    "quality-check": "npm run format:check && npm run lint",
+    "quality-fix": "npm run format && npm run lint:fix",
+    "build:prepare": "mkdirp dist/js dist/css dist/html dist/image",
+    "build:minify-js": "uglifyjs src/js/*.js --compress --mangle --comments false -o dist/js/plugin.js",
+    "build:minify-css": "cleancss -o dist/css/plugin.css src/css/*.css",
+    "build:copy-assets": "cpx \"src/html/**/*\" dist/html && cpx \"src/image/**/*\" dist/image && cpx src/manifest.json dist",
+    "build": "npm run build:prepare && npm run build:minify-js && npm run build:minify-css && npm run build:copy-assets",
+    "pack": "npm run build && kintone-plugin-packer dist --out-dir .",
+    "pack:with-key": "npm run build && kintone-plugin-packer dist --out-dir . --ppk dndfaoancceppkbjjlnjgakjhgfcdpaj.ppk",
+    "pack:new-key": "npm run build && kintone-plugin-packer dist --out-dir . && echo '新しい秘密鍵ファイルが生成されました。次回からは pack:with-key を使用してください。'",
+    "pack:quality": "npm run quality-fix && npm run build && kintone-plugin-packer dist --out-dir .",
+    "pack:quality-with-key": "npm run quality-fix && npm run build && kintone-plugin-packer dist --out-dir . --ppk dndfaoancceppkbjjlnjgakjhgfcdpaj.ppk",
+    "pack:quality-new-key": "npm run quality-fix && npm run build && kintone-plugin-packer dist --out-dir . && echo '新しい秘密鍵ファイルが生成されました。次回からは pack:quality-with-key を使用してください。'"
+  },
+  "devDependencies": {
+    "@kintone/plugin-packer": "^8.2.1",
+    "clean-css-cli": "^5.6.2",
+    "cpx": "^1.5.0",
+    "eslint": "^8.57.1",
+    "mkdirp": "^3.0.1",
+    "prettier": "^3.6.2",
+    "rimraf": "^5.0.1",
+    "uglify-js": "^3.17.4"
+  }
+}
