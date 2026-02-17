@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "type": "APP",
   "name": {
-    "ja": "通話アプリ",
-    "en": "Calling app"
+    "ja": "ソフトフォン(GC)とkintoneの連携アプリ",
+    "en": "Softphone (GC) and kintone integration app"
   },
   "description": {
-    "ja": "プラグイン化のお試しです。",
-    "en": "This is an experiment with plugging in."
+    "ja": "kintoneにソフトフォンの発着信を記録、またkintoneから発信を行う。",
+    "en": "Record softphone calls in kintone and make calls from kintone."
   },
   "icon": "image/check.png",
   "homepage_url": {
@@ -18,6 +18,15 @@
   "desktop": {
     "js": [
       "js/plugin.js"
+    ]
+  },
+  "config": {
+    "html": "html/config.html",
+    "js": [
+      "js/config.js"
+    ],
+    "css": [
+      "css/config.css"
     ]
   }
 }

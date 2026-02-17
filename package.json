@@ -15,17 +15,18 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rimraf dist plugin.ppk",
-    "lint": "eslint src/js/*.js",
-    "lint:fix": "eslint src/js/*.js --fix",
+    "lint": "eslint src/js/**/*.js",
+    "lint:fix": "eslint src/js/**/*.js --fix",
     "format": "prettier --write src/**/*.{js,css,html}",
     "format:check": "prettier --check src/**/*.{js,css,html}",
     "quality-check": "npm run format:check && npm run lint",
     "quality-fix": "npm run format && npm run lint:fix",
     "build:prepare": "mkdirp dist/js dist/css dist/html dist/image",
-    "build:minify-js": "uglifyjs src/js/*.js --compress --mangle --comments false -o dist/js/plugin.js",
-    "build:minify-css": "cleancss -o dist/css/plugin.css src/css/*.css",
+    "build:minify-app": "terser src/js/app/*.js --compress --mangle --comments false -o dist/js/plugin.js",
+    "build:minify-config": "terser src/js/config/*.js --compress --mangle --comments false -o dist/js/config.js",
+    "build:minify-css": "cleancss -o dist/css/config.css src/css/*.css",
     "build:copy-assets": "cpx \"src/html/**/*\" dist/html && cpx \"src/image/**/*\" dist/image && cpx src/manifest.json dist",
-    "build": "npm run build:prepare && npm run build:minify-js && npm run build:minify-css && npm run build:copy-assets",
+    "build": "npm run build:prepare && npm run build:minify-app && npm run build:minify-config && npm run build:minify-css && npm run build:copy-assets",
     "pack": "npm run build && kintone-plugin-packer dist --out-dir .",
     "pack:with-key": "npm run build && kintone-plugin-packer dist --out-dir . --ppk dndfaoancceppkbjjlnjgakjhgfcdpaj.ppk",
     "pack:new-key": "npm run build && kintone-plugin-packer dist --out-dir . && echo '新しい秘密鍵ファイルが生成されました。次回からは pack:with-key を使用してください。'",
@@ -41,6 +42,6 @@
     "mkdirp": "^3.0.1",
     "prettier": "^3.6.2",
     "rimraf": "^5.0.1",
-    "uglify-js": "^3.17.4"
+    "terser": "^5.46.0"
   }
 }

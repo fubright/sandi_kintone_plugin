@@ -8,11 +8,11 @@
   },
   "globals": {
     "kintone": "readonly",
-    "cybozu": "readonly",
+    "cybozu": "readonly"
   },
   "parserOptions": {
     "ecmaVersion": 2020,
-    "sourceType": "module",
+    "sourceType": "module"
   },
   "rules": {
     "no-unused-vars": "warn",

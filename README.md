@@ -22,7 +22,7 @@ Genesys Cloud連携と、kintone連携時のプラグイン
         ```
         ※npm installで以下がインストールされる  
         ・@kintone/plugin-packer：プラグイン用のソースコードをkintoneプラグインのファイルにパッケージングするためのツール  
-        ・uglify-js：JavaScriptを軽量化・圧縮(minify化)  
+        ・terser：JavaScriptを軽量化・圧縮(minify化)※uglify-jsの後継  
         ・clean-css-cli：CSSを圧縮(minify化)  
         ・eslint：JavaScriptの静的解析ツール  
         ・prettier：コードを自動的に整形してくれるツール  
